@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { SiteFooter } from "../components/layout/SiteFooter";
 import { SiteNavbar } from "../components/layout/SiteNavbar";
 import { PageTransition } from "../components/layout/PageTransition";
 import { ThemeProvider } from "../components/providers/ThemeProvider";
@@ -13,7 +14,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "MPN Language Platform | Learn Italian and Spanish",
   description:
-    "Premium Italian and Spanish language coaching in the UK with flexible token-based lessons.",
+    "Master Italian and Spanish. On your terms.",
 };
 
 export default function RootLayout({
@@ -27,6 +28,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <SiteNavbar />
           <PageTransition>{children}</PageTransition>
+          <SiteFooter />
         </ThemeProvider>
       </body>
     </html>

@@ -47,17 +47,11 @@ export default function StudentsPage() {
     offset: ["start start", "end start"],
   });
 
-  const glowY = useTransform(scrollYProgress, [0, 1], [0, -180]);
   const cardRotate = useTransform(scrollYProgress, [0, 1], [5, -5]);
 
   return (
     <div className="relative min-h-screen bg-[var(--background)] pt-24 text-[var(--foreground)]">
-      <section ref={heroRef} className="section-grid radial-atmosphere relative overflow-hidden px-5 py-20 md:px-10 md:py-28">
-        <motion.div
-          style={{ y: glowY }}
-          className="pointer-events-none absolute -right-20 top-8 h-72 w-72 rounded-full bg-[#0057FF]/20 blur-3xl dark:bg-[#2f6cff]/25"
-          aria-hidden
-        />
+      <section ref={heroRef} className="relative overflow-hidden px-5 py-20 md:px-10 md:py-28">
 
         <div className="mx-auto max-w-6xl">
           <motion.p

@@ -3,6 +3,7 @@
 import { CheckCircle2, Coins, Sparkles } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useMemo, useRef, useState } from "react";
+import { ScrollTypeTitle } from "./ScrollTypeTitle";
 
 type Mode = "oneToOne" | "group";
 
@@ -130,9 +131,11 @@ export function PricingSection() {
           className="mb-12 max-w-3xl"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/60">Pricing</p>
-          <h2 className="mt-3 text-[clamp(2rem,5vw,4.4rem)] font-semibold leading-[0.92] tracking-[-0.03em]">
-            Token-based pricing built for flexibility.
-          </h2>
+          <ScrollTypeTitle
+            progress={scrollYProgress}
+            className="mt-3 text-[clamp(2rem,5vw,4.4rem)] font-semibold leading-[0.92] tracking-[-0.03em]"
+            parts={[{ text: "Token-based pricing built for flexibility." }]}
+          />
           <p className="mt-4 text-black/70 dark:text-white/75">
             Choose one-to-one depth or group momentum. Scale your learning pace with transparent token packs and clear
             bonus rewards.

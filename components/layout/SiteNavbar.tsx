@@ -1,27 +1,20 @@
 "use client";
 
-import { Menu, Moon, Sparkles, Sun } from "lucide-react";
+import { Menu, Sparkles } from "lucide-react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Link from "next/link";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const links = [
   { label: "Home", href: "/" },
   { label: "Students", href: "/students" },
   { label: "Become a Tutor", href: "/become-a-tutor" },
-  { label: "Legal", href: "/legal" },
+  { label: "Contacts", href: "/contacts" },
 ];
 
 export function SiteNavbar() {
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
-  const { theme, resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useMotionValueEvent(scrollY, "change", (current: number) => {
     const previous = scrollY.getPrevious() ?? 0;
@@ -31,9 +24,6 @@ export function SiteNavbar() {
       setHidden(false);
     }
   });
-
-  const activeTheme = mounted ? (theme === "system" ? resolvedTheme : theme) : "light";
-  const isDark = activeTheme === "dark";
 
   return (
     <motion.nav
@@ -67,15 +57,6 @@ export function SiteNavbar() {
           >
             Login
           </Link>
-
-          <button
-            onClick={() => setTheme(isDark ? "light" : "dark")}
-            className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-3 py-2 text-xs font-semibold tracking-wide transition hover:bg-black hover:text-white dark:border-white/20 dark:bg-black/60 dark:hover:bg-white dark:hover:text-black"
-            aria-label="Toggle theme"
-          >
-            {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            <span className="hidden sm:inline">{isDark ? "Light" : "Dark"}</span>
-          </button>
 
           <button
             className="inline-flex rounded-full border border-black/10 bg-white/70 p-2 md:hidden dark:border-white/20 dark:bg-black/60"

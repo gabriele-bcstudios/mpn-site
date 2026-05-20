@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { CalendarClock, Languages, Target } from "lucide-react";
 import { useRef } from "react";
+import { ScrollTypeTitle } from "./ScrollTypeTitle";
 
 const steps = [
   {
@@ -48,9 +49,11 @@ export function HowItWorksSection() {
           className="mb-12 max-w-2xl"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/60 dark:text-white/65">How it Works</p>
-          <h2 className="mt-3 text-[clamp(2rem,4.8vw,4rem)] font-semibold leading-[0.92] tracking-[-0.03em]">
-            A clear system designed for elite progress.
-          </h2>
+          <ScrollTypeTitle
+            progress={scrollYProgress}
+            className="mt-3 text-[clamp(2rem,4.8vw,4rem)] font-semibold leading-[0.92] tracking-[-0.03em]"
+            parts={[{ text: "A clear system designed for elite progress." }]}
+          />
         </motion.div>
 
         <div className="grid gap-5 md:grid-cols-3">
