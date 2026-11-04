@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://use.typekit.net https://p.typekit.net; font-src 'self' https://use.typekit.net https://p.typekit.net data:; img-src 'self' data: https://images.unsplash.com https://p.typekit.net; connect-src 'self' https://app.kit.com; form-action 'self'; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<title>Get your plan | MPN — Making People Native</title>
+<meta name="description" content="Log in to the MPN platform to buy your plan and receive your lesson tokens.">
+<link rel="icon" href="assets/logo/mpn-icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://use.typekit.net/tyk2elt.css">
+<link rel="stylesheet" href="css/style.css?v=21">
+<link rel="stylesheet" href="css/pages.css?v=76">
+</head>
+<body>
+
+<div class="nav-wrap">
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo"><img src="assets/logo/mpn-logo-full.svg" alt="MPN — Making People Native"></a>
+    <div class="nav-links">
+      <span class="nav-pill-indicator"></span>
+      <a href="index.html">Home</a>
+      <a href="students.html">Lessons</a>
+      <a href="pricing.html" class="active">Pricing</a>
+      <a href="how-to-start.html">How It Works</a>
+      <a href="contacts.html">Contact</a>
+    </div>
+    <div class="nav-actions nav-cta">
+      <a href="launch.html" data-platform="login" class="nav-btn nav-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>Log in</a>
+      <a href="launch.html" data-platform="signup" class="nav-btn nav-signup">Sign up<span class="nav-signup-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+    <button class="nav-burger" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </nav>
+</div>
+
+<div class="mobile-menu">
+  <button class="mobile-menu-close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></button>
+  <a href="index.html">Home</a>
+  <a href="students.html">Lessons</a>
+  <a href="pricing.html" class="active">Pricing</a>
+  <a href="how-to-start.html">How It Works</a>
+  <a href="contacts.html">Contact</a>
+  <div class="mobile-auth">
+    <a href="launch.html" data-platform="login" class="btn btn-ghost-blue">Log in</a>
+    <a href="launch.html" data-platform="signup" class="btn btn-white">Sign up</a>
+  </div>
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <section class="container simple-hero plan-hero reveal">
+    <span class="badge badge-on-white">Before you buy</span>
+    <h1>Log in to <em>get your plan</em></h1>
+    <p>Plans and tokens are bought inside the MPN platform. Log in (or create your account) first — then you can buy your plan there and your tokens are added directly to your account, ready to book lessons.</p>
+  </section>
+
+  <!-- SELECTION + STEPS -->
+  <section class="container plan-landing reveal">
+    <div class="plan-landing-grid">
+      <aside class="plan-summary" id="planSummary">
+        <span class="stack-num">Your selection</span>
+        <h2 id="psName">PROGRESS</h2>
+        <p class="ps-range" id="psRange">24–36 lessons</p>
+        <p class="ps-price"><span id="psPrice">£22.99</span><small> / lesson<span id="psGroupNote" hidden> per student</span></small></p>
+        <ul class="ps-meta">
+          <li><span>Language</span><strong id="psLang">Italian</strong></li>
+          <li><span>Type</span><strong>Freestyle</strong></li>
+          <li><span>Format</span><strong id="psFormat">One-to-one</strong></li>
+          <li><span>Tokens</span><strong>1 token = 1 lesson</strong></li>
+          <li class="ps-opts"><span>Two options</span><strong id="psOpts"></strong></li>
+        </ul>
+        <p class="ps-note">Unused tokens remain valid for 30 days after your plan ends.</p>
+        <a href="pricing.html#packages" class="ps-change" id="psChange">Change plan</a>
+      </aside>
+
+      <div class="plan-steps">
+        <h2 class="plan-steps-title">How buying <em class="italic">works</em></h2>
+        <ol class="buy-steps">
+          <li><span class="bs-num">1</span><div><h3>Log in to the platform</h3><p>Use your MPN account. New here? Creating an account is free and takes less than a minute.</p></div></li>
+          <li><span class="bs-num">2</span><div><h3>Buy your plan inside the platform</h3><p>Once you are logged in, choose your plan and pay there. Your tokens are added directly to your account.</p></div></li>
+          <li><span class="bs-num">3</span><div><h3>Book your lessons with tokens</h3><p>Pick your tutor, choose an available date and time, and use one token per lesson.</p></div></li>
+        </ol>
+        <div class="plan-actions">
+          <a href="launch.html" data-platform="login" class="btn btn-primary" id="psLogin">Log in to continue</a>
+          <a href="launch.html" data-platform="signup" class="btn btn-outline" id="psSignup">Create an account</a>
+        </div>
+        <p class="plan-help">Not sure this is the right plan? <a href="book-a-discovery-call.html" class="inline-link">Book a discovery call</a> and we will help you choose.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container faq-section faq-center  reveal">
+    <div class="faq-head">
+      <span class="badge badge-on-white">FAQ</span>
+      <h2 class="title">Frequently Asked <em class="italic">Questions</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open"><button class="faq-q" aria-expanded="true"><span>How do payments work?</span><i class="faq-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></i></button><div class="faq-a"><p>You buy tokens by choosing a plan or a single lesson at checkout, with prices shown in British pounds (GBP) on our <a href="pricing.html">Pricing</a> page. Payments are processed securely by Stripe, so MPN never sees or stores your full card details. The payment methods available and the total you pay are shown at checkout before you confirm.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>How do tokens work?</span><i class="faq-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></i></button><div class="faq-a"><p>One token equals one lesson, whether you book a one-to-one lesson or a group session.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>What should I do if my payment fails?</span><i class="faq-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></i></button><div class="faq-a"><p>If your payment doesn’t go through, check your payment details and any authorisation request from your bank. If the problem continues, contact our support team for help.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>What happens if my tutor is unavailable?</span><i class="faq-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></i></button><div class="faq-a"><p>When you sign up, you can choose a main tutor and two backup tutors. If your main tutor is unavailable, you can book with one of your backup tutors, subject to their availability.</p></div></div>
+    </div>
+    <p class="faq-more"><a href="contacts.html#faq" class="btn btn-outline">See all questions</a></p>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="container cta-simple reveal">
+    <span class="badge badge-on-white">Need some help?</span>
+    <h2 class="title">Let’s talk it <em class="italic">through</em></h2>
+    <p>Not sure which tutor, package or learning option is right for you? Book a discovery call with our team. We’ll answer your questions and help you decide what works best for you, without any pressure.</p>
+    <a href="book-a-discovery-call.html" class="btn btn-primary">Book your discovery call</a>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="assets/logo/mpn-logo-full.svg" alt="MPN — Making People Native"></div>
+        <div class="footer-brand-actions">
+          <a href="how-to-start.html" class="btn btn-white btn-sm">Start learning</a>
+          <a href="book-a-discovery-call.html" class="btn btn-white btn-sm">Book a discovery call</a>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>For students</h4>
+          <ul>
+            <li><a href="how-to-start.html">How it works</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contacts.html#faq">How tokens work</a></li>
+            <li><a href="students.html#find-tutor">Find a tutor</a></li>
+            <li><a href="freestyle.html">Freestyle lessons</a></li>
+            <li><a href="gcse.html">GCSE lessons</a></li>
+            <li><a href="a-level.html">A-level lessons</a></li>
+            <li><a href="contacts.html#faq">Student FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>For tutors</h4>
+          <ul>
+            <li><a href="how-to-become-a-tutor.html">Become a tutor</a></li>
+            <li><a href="requirements.html">Tutor requirements</a></li>
+            <li><a href="how-can-i-earn.html">Tutor pay</a></li>
+            <li><a href="work-smart.html">How tutoring works</a></li>
+            <li><a href="tutor-faq.html">Tutor FAQs</a></li>
+            <li><a href="my-account.html">Tutor login</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>About MPN</h4>
+          <ul>
+            <li><a href="about-us.html">About us</a></li>
+            <li><a href="contacts.html">Contact us</a></li>
+            <li><a href="our-values.html">Our values</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-of-use.html">Terms of Use</a></li>
+            <li><a href="sales-and-refund.html">Refund Policy</a></li>
+            <li><a href="cookie-policy.html">Cookie Policy</a></li>
+            <li><a href="accessibility.html">Accessibility Statement</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 MPN Agency Ltd. All rights reserved.</span>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/mpnagency/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg></a>
+      </div>
+    </div>
+    <p class="footer-company">MPN Agency Ltd · Company number 17515460 · Registered in England and Wales · Registered office: Flat 11, 48 Lynton Road, London, England, W3 9HW</p>
+  </div>
+</footer>
+
+<script src="js/script.js?v=95"></script>
+</body>
+</html>

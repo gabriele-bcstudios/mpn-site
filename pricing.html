@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://use.typekit.net https://p.typekit.net; font-src 'self' https://use.typekit.net https://p.typekit.net data:; img-src 'self' data: https://images.unsplash.com https://p.typekit.net; connect-src 'self' https://app.kit.com; form-action 'self'; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<title>Pricing | MPN — Making People Native</title>
+<meta name="description" content="Flexible lessons, simple pricing. Choose one-to-one or group lessons and select a START, PROGRESS or MASTERY package.">
+<link rel="icon" href="assets/logo/mpn-icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://use.typekit.net/tyk2elt.css">
+<link rel="stylesheet" href="css/style.css?v=21">
+<link rel="stylesheet" href="css/pages.css?v=76">
+</head>
+<body>
+
+<div class="nav-wrap">
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo"><img src="assets/logo/mpn-logo-full.svg" alt="MPN — Making People Native"></a>
+    <div class="nav-links">
+      <span class="nav-pill-indicator"></span>
+      <a href="index.html">Home</a>
+      <a href="students.html">Lessons</a>
+      <a href="pricing.html" class="active">Pricing</a>
+      <a href="how-to-start.html">How It Works</a>
+      <a href="contacts.html">Contact</a>
+    </div>
+    <div class="nav-actions nav-cta">
+      <a href="launch.html" data-platform="login" class="nav-btn nav-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>Log in</a>
+      <a href="launch.html" data-platform="signup" class="nav-btn nav-signup">Sign up<span class="nav-signup-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+    <button class="nav-burger" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </nav>
+</div>
+
+<div class="mobile-menu">
+  <button class="mobile-menu-close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></button>
+  <a href="index.html">Home</a>
+  <a href="students.html">Lessons</a>
+  <a href="pricing.html" class="active">Pricing</a>
+  <a href="how-to-start.html">How It Works</a>
+  <a href="contacts.html">Contact</a>
+  <div class="mobile-auth">
+    <a href="launch.html" data-platform="login" class="btn btn-ghost-blue">Log in</a>
+    <a href="launch.html" data-platform="signup" class="btn btn-white">Sign up</a>
+  </div>
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <section class="container pricing-hero reveal">
+    <div class="notch-blue-simple">
+      <h1>Flexible <em>lessons</em><br>Simple <em>pricing</em></h1>
+      <p class="lede white center">Choose between one-to-one and group lessons, then select a package based on how often you want to learn. Prefer less commitment? You can also purchase single lessons.</p>
+      <p class="lede white center" style="margin-top:14px;">One token equals one lesson, making it easy to understand what is included and manage your bookings.</p>
+      <div class="text-center"><a href="#packages" class="btn btn-white-outline">View packages</a></div>
+    </div>
+  </section>
+
+  <!-- CHOOSE THE PLAN -->
+  <section id="packages" class="container pricing-find reveal">
+    <h2>Choose the plan<br>that <em class="italic">fits you</em></h2>
+    <p class="lede center" style="margin:-16px auto 34px;">Select one-to-one or group lessons and compare the plans below.</p>
+
+    <div class="lesson-types">
+      <a class="type-pill active" href="freestyle.html" data-type="freestyle">Freestyle · Italian / Spanish</a>
+      <a class="type-pill soon" href="gcse.html" data-type="gcse">GCSE · Italian / Spanish <em>Coming soon</em></a>
+      <a class="type-pill soon" href="a-level.html" data-type="a-level">A-level · Italian / Spanish <em>Coming soon</em></a>
+    </div>
+    <p class="types-note">The packages below are our <strong>Freestyle</strong> plans, available in <strong>Italian and Spanish</strong>. GCSE and A-level packages will be available soon. <a href="freestyle.html" class="inline-link" data-type="freestyle">What is Freestyle?</a></p>
+
+    <p class="level-note" id="levelNote" hidden>Your level: <strong data-level-name></strong> — your tutor will shape every lesson around it.</p>
+
+    <div class="toggle-pill" data-pricing-toggle>
+      <span class="toggle-indicator"></span>
+      <button class="active" data-mode="one">One-to-one</button>
+      <button data-mode="group">Group</button>
+    </div>
+
+    <div class="pricing-cards" id="pricingCards" data-mode="one" style="margin-top:56px;">
+      <div class="price-card">
+        <p class="plan-lang">Freestyle · Italian / Spanish</p>
+        <h3 class="plan-name">START</h3>
+        <p class="plan-price"><span class="p-one">£24.99</span><span class="p-group">£19.99</span><small> / lesson<span class="p-group"> per student</span></small></p>
+        <p class="plan-tag">A first structured learning path</p>
+        <div class="plan-options">
+          <p class="po-title">Two options in this package</p>
+          <div class="po-row"><strong>8 lessons</strong><span>2 lessons a week</span></div>
+          <div class="po-row"><strong>12 lessons</strong><span>3 lessons a week</span></div>
+        </div>
+        <ul>
+          <li><strong>Best for:</strong> customers with a specific short-term objective or who want to begin a structured path.</li>
+          <li><strong>Possible focus:</strong> conversation and confidence, grammar foundations or revision, pronunciation and phonetics, preparation for a trip or move, support for a test, exam or job interview.</li>
+          <li>1 token = 1 lesson</li>
+          <li>Unused tokens remain valid for 30 days after your plan ends</li>
+        </ul>
+        <a href="choose-plan.html?plan=start" data-plan="start" class="btn btn-primary plan-btn">Choose this plan</a>
+      </div>
+
+      <div class="price-card featured">
+        <span class="price-badge">Most popular</span>
+        <p class="plan-lang">Freestyle · Italian / Spanish</p>
+        <h3 class="plan-name">PROGRESS</h3>
+        <p class="plan-price"><span class="p-one">£22.99</span><span class="p-group">£18.99</span><small> / lesson<span class="p-group"> per student</span></small></p>
+        <p class="plan-tag">For consistency and measurable progress</p>
+        <div class="plan-options">
+          <p class="po-title">Two options in this package</p>
+          <div class="po-row"><strong>24 lessons</strong><span>2 lessons a week</span></div>
+          <div class="po-row"><strong>36 lessons</strong><span>3 lessons a week</span></div>
+        </div>
+        <ul>
+          <li><strong>Best for:</strong> customers who want consistent improvement and enough time to work on more than one skill.</li>
+          <li><strong>Possible focus:</strong> regular speaking practice, deeper grammar work, vocabulary development, pronunciation, exam preparation, academic or professional communication, preparation for studying or living abroad.</li>
+          <li>1 token = 1 lesson</li>
+          <li>Unused tokens remain valid for 30 days after your plan ends</li>
+        </ul>
+        <a href="choose-plan.html?plan=progress" data-plan="progress" class="btn btn-white plan-btn">Choose this plan</a>
+      </div>
+
+      <div class="price-card">
+        <p class="plan-lang">Freestyle · Italian / Spanish</p>
+        <h3 class="plan-name">MASTERY</h3>
+        <p class="plan-price"><span class="p-one">£19.99</span><span class="p-group">£16.99</span><small> / lesson<span class="p-group"> per student</span></small></p>
+        <p class="plan-tag">For long-term goals and maximum continuity</p>
+        <div class="plan-options">
+          <p class="po-title">Two options in this package</p>
+          <div class="po-row"><strong>48 lessons</strong><span>2 lessons a week</span></div>
+          <div class="po-row"><strong>72 lessons</strong><span>3 lessons a week</span></div>
+        </div>
+        <ul>
+          <li><strong>Best for:</strong> customers with ambitious or long-term objectives who want continuity and a more complete learning journey.</li>
+          <li><strong>Possible focus:</strong> fluency and natural conversation, advanced grammar, phonetics and pronunciation refinement, long-term exam preparation, professional language and interviews, relocation or study-abroad preparation, culture and real-life communication.</li>
+          <li>1 token = 1 lesson</li>
+          <li>Unused tokens remain valid for 30 days after your plan ends</li>
+        </ul>
+        <a href="choose-plan.html?plan=mastery" data-plan="mastery" class="btn btn-primary plan-btn">Choose this plan</a>
+      </div>
+    </div>
+
+    <div class="plan-note mini-offers">
+      <div class="offer-card n-one"><span class="offer-price">£19.99</span><div><strong>First trial lesson</strong><p>A reduced first lesson so you can experience your tutor and the MPN method before choosing a package.</p></div></div>
+      <div class="offer-card n-one"><span class="offer-price">£27.99</span><div><strong>Single 1-to-1 lesson</strong><p>Our standard pay-as-you-go price, with no package required.</p></div></div>
+      <div class="offer-card offer-wide n-group"><span class="offer-price">Packages only</span><div><strong>Group lessons</strong><p>Group lessons are available through packages only. Prices are shown per student, per lesson.</p></div></div>
+    </div>
+
+    <div class="areas-block">
+      <h3>Freestyle: <em class="italic">possible service areas</em></h3>
+      <p>Freestyle is a personalised language service built around your objective. It can combine conversation, grammar, pronunciation and phonetics, exam or test preparation, job-interview preparation, travel or relocation needs, and real-life communication.</p>
+      <div class="areas-grid">
+<span class="area-chip">Conversation & fluency</span>
+<span class="area-chip">Grammar & vocabulary</span>
+<span class="area-chip">Pronunciation & phonetics</span>
+<span class="area-chip">Tests & exam preparation</span>
+<span class="area-chip">Job interview preparation</span>
+<span class="area-chip">Travel & relocation</span>
+<span class="area-chip">Study-abroad preparation</span>
+<span class="area-chip">Professional communication</span>
+<span class="area-chip">Culture & real-life language</span>
+      </div>
+    </div>
+
+    <div class="notsure">
+      <h3>Not sure which plan to choose?</h3>
+      <p>Tell us about your schedule and goals, and we’ll help you compare your options.</p>
+      <a href="book-a-discovery-call.html" class="btn btn-primary">Book a discovery call</a>
+    </div>
+  </section>
+
+  <!-- LET'S BUILD YOUR LEARNING PLAN -->
+  <section class="container stack-section build-plan reveal" id="build-plan">
+    <div class="stack-layout">
+      <div class="stack-sticky">
+        <span class="badge badge-on-white">Step by step</span>
+        <h2 class="title">Let’s Build Your <em class="italic">Learning Plan</em></h2>
+        <p class="lede">Shape your learning around your goals, schedule and preferred way of learning.</p>
+        <ol class="step-tracker" id="stepTracker">
+          <li class="active"><span>1</span>Find your format</li>
+          <li><span>2</span>Set your focus</li>
+          <li><span>3</span>Pick your plan</li>
+          <li><span>4</span>Book your lessons</li>
+        </ol>
+      </div>
+      <div class="stack-cards">
+        <article class="stack-card is-light" style="--rot:0deg">
+          <span class="stack-num">Step 1</span>
+          <h3>Find Your <em class="italic">Format</em></h3>
+          <div class="toggle-pill" style="margin:6px 0 18px;align-self:flex-start" inert aria-hidden="true">
+            <span class="toggle-indicator"></span>
+            <button class="active">One-to-one</button>
+            <button>Group</button>
+          </div>
+          <p>Learn individually with a dedicated tutor or practise alongside other learners in a group.</p>
+        </article>
+
+        <article class="stack-card is-light" style="--rot:0deg">
+          <span class="stack-num">Step 2</span>
+          <h3>Set Your <em class="italic">Focus</em></h3>
+          <div class="mini-toggle-group" style="margin-top:6px" inert aria-hidden="true">
+            <span class="chip active">Everyday conversation</span>
+            <span class="chip">University preparation</span>
+            <span class="chip">Professional communication</span>
+            <span class="chip disabled">GCSE and A-level preparation — Coming soon</span>
+          </div>
+        </article>
+
+        <article class="stack-card is-light" style="--rot:0deg">
+          <span class="stack-num">Step 3</span>
+          <h3>Pick Your <em class="italic">Plan</em></h3>
+          <p>Select a package based on how often and for how long you want to learn, or purchase a single lesson for greater flexibility.</p>
+          <ul class="plan-mini">
+            <li><strong>START</strong><span>8–12 lessons</span><b>£24.99</b></li>
+            <li class="hot"><strong>PROGRESS</strong><span>24–36 lessons</span><b>£22.99</b></li>
+            <li><strong>MASTERY</strong><span>48–72 lessons</span><b>£19.99</b></li>
+          </ul>
+          <small class="plan-mini-note">Every package has two options: 2 or 3 lessons a week · 1 token = 1 lesson</small>
+        </article>
+
+        <article class="stack-card is-light" style="--rot:0deg">
+          <span class="stack-num">Step 4</span>
+          <h3>Book Your <em class="italic">Lessons</em></h3>
+          <p>Add up to three preferred tutors for greater availability. Select an open date and time and book directly through the MPN platform.</p>
+          <p>Your shared learning profile keeps your progress in one place, allowing another tutor to continue from where you left off.</p>
+          <div class="select-field" style="width:100%;margin-top:18px" inert aria-hidden="true">
+            Select tutor
+            <svg viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <span class="btn btn-primary stack-card-cta" inert aria-hidden="true">Book a lesson</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+    <!-- FAQ -->
+  <section class="container faq-section faq-center  reveal">
+    <div class="faq-head">
+      <span class="badge badge-on-white">FAQ</span>
+      <h2 class="title">Frequently Asked <em class="italic">Questions</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open"><button class="faq-q" aria-expanded="true"><span>Do I need to book a discovery call to get started?</span><i class="faq-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></i></button><div class="faq-a"><p>No, you can get started independently by choosing your tutor yourself or using our AI-powered matching system to find tutors and groups that suit your goals, level and availability. If you’d prefer personal guidance, you can book a discovery call with our team.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>How do tokens work?</span><i class="faq-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></i></button><div class="faq-a"><p>One token equals one lesson, whether you book a one-to-one lesson or a group session.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>What happens if my tutor is unavailable?</span><i class="faq-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></i></button><div class="faq-a"><p>When you sign up, you can choose a main tutor and two backup tutors. If your main tutor is unavailable, you can book with one of your backup tutors, subject to their availability.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>Are your tutors qualified?</span><i class="faq-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></i></button><div class="faq-a"><p>Our tutors have relevant teaching experience and/or receive in-house training from experienced, accredited GCSE and A-level teachers to help them deliver effective, engaging lessons.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>How do you select your tutors?</span><i class="faq-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></i></button><div class="faq-a"><p>We select tutors based on their qualifications, experience, teaching skills and motivation, as well as their passion for sharing their language and culture. All our language tutors are native speakers of the language they teach and have sufficient English proficiency to communicate clearly with students.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>Can I join a group if I don’t have anyone to sign up with?</span><i class="faq-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></i></button><div class="faq-a"><p>Yes! You can sign up on your own. Our team can help you find a suitable group, or you can use our AI-powered matching system. You can also choose an available place in a group that is still accepting students and hasn’t started yet.</p><p>Groups need at least 3 students to start and have a maximum of 5, except for A-level groups, which have a maximum of 4.</p></div></div>
+    </div>
+    <p class="faq-more"><a href="contacts.html#faq" class="btn btn-outline">See all questions</a></p>
+  </section>
+
+<section id="cta" class="container cta-simple reveal">
+    <span class="badge badge-on-white">Need some help?</span>
+    <h2 class="title">Let’s talk it <em class="italic">through</em></h2>
+    <p>Not sure which tutor, package or learning option is right for you? Book a discovery call with our team. We’ll answer your questions and help you decide what works best for you, without any pressure.</p>
+    <a href="book-a-discovery-call.html" class="btn btn-primary">Book your discovery call</a>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="assets/logo/mpn-logo-full.svg" alt="MPN — Making People Native"></div>
+        <div class="footer-brand-actions">
+          <a href="how-to-start.html" class="btn btn-white btn-sm">Start learning</a>
+          <a href="book-a-discovery-call.html" class="btn btn-white btn-sm">Book a discovery call</a>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>For students</h4>
+          <ul>
+            <li><a href="how-to-start.html">How it works</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contacts.html#faq">How tokens work</a></li>
+            <li><a href="students.html#find-tutor">Find a tutor</a></li>
+            <li><a href="freestyle.html">Freestyle lessons</a></li>
+            <li><a href="gcse.html">GCSE lessons</a></li>
+            <li><a href="a-level.html">A-level lessons</a></li>
+            <li><a href="contacts.html#faq">Student FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>For tutors</h4>
+          <ul>
+            <li><a href="how-to-become-a-tutor.html">Become a tutor</a></li>
+            <li><a href="requirements.html">Tutor requirements</a></li>
+            <li><a href="how-can-i-earn.html">Tutor pay</a></li>
+            <li><a href="work-smart.html">How tutoring works</a></li>
+            <li><a href="tutor-faq.html">Tutor FAQs</a></li>
+            <li><a href="my-account.html">Tutor login</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>About MPN</h4>
+          <ul>
+            <li><a href="about-us.html">About us</a></li>
+            <li><a href="contacts.html">Contact us</a></li>
+            <li><a href="our-values.html">Our values</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-of-use.html">Terms of Use</a></li>
+            <li><a href="sales-and-refund.html">Refund Policy</a></li>
+            <li><a href="cookie-policy.html">Cookie Policy</a></li>
+            <li><a href="accessibility.html">Accessibility Statement</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 MPN Agency Ltd. All rights reserved.</span>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/mpnagency/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg></a>
+      </div>
+    </div>
+    <p class="footer-company">MPN Agency Ltd · Company number 17515460 · Registered in England and Wales · Registered office: Flat 11, 48 Lynton Road, London, England, W3 9HW</p>
+  </div>
+</footer>
+
+<script src="js/script.js?v=95"></script>
+</body>
+</html>
