@@ -168,158 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- Book a discovery call: live availability, UK-time slots, local display -------- */
-  const bfcCalendar = document.getElementById('bfcCalendar');
-  if (bfcCalendar){
-    const LONDON = 'Europe/London';
-    const monthLabel = document.getElementById('bfcMonthLabel');
-    const daysEl = document.getElementById('bfcDays');
-    const slotsEl = document.getElementById('bfcSlots');
-    const timesTitle = document.getElementById('bfcTimesTitle');
-    const tzSelect = document.getElementById('bfcTz');
-    const tzNote = document.getElementById('bfcTzNote');
-    const dateChip = document.getElementById('bfcDateChip');
-    const timeChip = document.getElementById('bfcTimeChip');
-    const ukLine = document.getElementById('bfcUk');
-    const errBox = document.getElementById('bfcError');
-    const submitBtn = document.getElementById('bfcSubmit');
-    const bfcForm = document.getElementById('bfcForm');
-    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-
-    let slots = [];                       // UTC timestamps (ms) of free slots
-    let byDay = new Map();                // local date key -> [timestamps]
-    let tz = LONDON;
-    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || LONDON; } catch (e) { tz = LONDON; }
-    let selectedDay = null, selectedSlot = null;
-    let viewYear = new Date().getFullYear(), viewMonth = new Date().getMonth();
-
-    const dayKey = (ms, zone) => {
-      const p = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: zone, year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date(ms)).map(x => [x.type, x.value]));
-      return `${p.year}-${p.month}-${p.day}`;
-    };
-    const fmtTime = (ms, zone) => new Intl.DateTimeFormat('en-GB', { timeZone: zone, hour: '2-digit', minute: '2-digit' }).format(new Date(ms));
-    const fmtDay = (key) => { const [y, m, d] = key.split('-').map(Number); return `${new Date(Date.UTC(y, m - 1, d)).toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' })}`; };
-    const fmtFull = (ms, zone) => new Intl.DateTimeFormat('en-GB', { timeZone: zone, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' }).format(new Date(ms));
-
-    const group = () => {
-      byDay = new Map();
-      slots.forEach(ms => { const k = dayKey(ms, tz); if (!byDay.has(k)) byDay.set(k, []); byDay.get(k).push(ms); });
-    };
-
-    const renderTzNote = () => {
-      tzNote.textContent = tz === LONDON
-        ? 'Calls are available 09:00–20:00 UK time (London).'
-        : `Times are shown in your time zone. Calls run 09:00–20:00 UK time (London).`;
-    };
-
-    const renderSlots = () => {
-      slotsEl.replaceChildren();
-      if (!selectedDay){ timesTitle.textContent = 'Choose a day to see available times'; return; }
-      timesTitle.textContent = fmtDay(selectedDay);
-      (byDay.get(selectedDay) || []).forEach(ms => {
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'bfc-slot' + (ms === selectedSlot ? ' selected' : '');
-        const main = document.createElement('strong'); main.textContent = fmtTime(ms, tz);
-        b.append(main);
-        if (tz !== LONDON){ const uk = document.createElement('small'); uk.textContent = `${fmtTime(ms, LONDON)} UK`; b.append(uk); }
-        b.addEventListener('click', () => { selectedSlot = ms; updateChips(); renderSlots(); });
-        slotsEl.append(b);
-      });
-    };
-
-    const updateChips = () => {
-      dateChip.textContent = selectedDay ? fmtDay(selectedDay) : 'Pick a day';
-      timeChip.textContent = selectedSlot ? fmtTime(selectedSlot, tz) : 'Pick a time';
-      if (selectedSlot && tz !== LONDON){ ukLine.hidden = false; ukLine.textContent = `That is ${fmtTime(selectedSlot, LONDON)} in the UK (London).`; } else ukLine.hidden = true;
-    };
-
-    const renderCalendar = () => {
-      monthLabel.textContent = `${monthNames[viewMonth]} ${viewYear}`;
-      daysEl.replaceChildren();
-      const first = new Date(viewYear, viewMonth, 1).getDay();
-      const count = new Date(viewYear, viewMonth + 1, 0).getDate();
-      for (let i = 0; i < first; i++) daysEl.append(document.createElement('span'));
-      for (let d = 1; d <= count; d++){
-        const key = `${viewYear}-${String(viewMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'bfc-day';
-        b.textContent = d;
-        if (!byDay.has(key)){ b.classList.add('muted'); b.disabled = true; }
-        if (key === selectedDay) b.classList.add('selected');
-        b.addEventListener('click', () => { selectedDay = key; selectedSlot = null; updateChips(); renderCalendar(); renderSlots(); });
-        daysEl.append(b);
-      }
-    };
-
-    const fillTz = () => {
-      let zones = [];
-      try { zones = Intl.supportedValuesOf('timeZone'); } catch (e) { zones = [LONDON, 'Europe/Rome', 'Europe/Madrid', 'Europe/Paris', 'America/New_York', 'America/Los_Angeles', 'Asia/Dubai', 'Asia/Tokyo', 'Australia/Sydney']; }
-      const first = [LONDON]; if (tz !== LONDON) first.unshift(tz);
-      const all = [...new Set([...first, ...zones])];
-      tzSelect.replaceChildren();
-      all.forEach(z => { const o = document.createElement('option'); o.value = z; o.textContent = z === LONDON ? 'UK — London (Europe/London)' : z.replace(/_/g, ' '); if (z === tz) o.selected = true; tzSelect.append(o); });
-    };
-    tzSelect.addEventListener('change', () => {
-      tz = tzSelect.value; selectedDay = null; selectedSlot = null;
-      group(); renderTzNote(); updateChips();
-      const first = [...byDay.keys()].sort()[0];
-      if (first){ const [y, m] = first.split('-').map(Number); viewYear = y; viewMonth = m - 1; selectedDay = first; }
-      renderCalendar(); renderSlots(); updateChips();
-    });
-
-    document.getElementById('bfcPrev').addEventListener('click', () => { viewMonth--; if (viewMonth < 0){ viewMonth = 11; viewYear--; } renderCalendar(); });
-    document.getElementById('bfcNext').addEventListener('click', () => { viewMonth++; if (viewMonth > 11){ viewMonth = 0; viewYear++; } renderCalendar(); });
-
-    const loadSlots = async (keepSelection) => {
-      const r = await fetch(`${MPN_API}/api/availability`, { cache: 'no-store' });
-      if (!r.ok) throw new Error('availability');
-      const j = await r.json();
-      slots = j.slots.map(s => Date.parse(s));
-      group();
-      if (!keepSelection || !byDay.has(selectedDay)){
-        selectedDay = null; selectedSlot = null;
-        const first = [...byDay.keys()].sort()[0];
-        if (first){ const [y, m] = first.split('-').map(Number); viewYear = y; viewMonth = m - 1; selectedDay = first; }
-      } else if (selectedSlot && !slots.includes(selectedSlot)) selectedSlot = null;
-      renderCalendar(); renderSlots(); updateChips();
-    };
-
-    const showError = (msg) => { errBox.textContent = msg; };
-    fillTz(); renderTzNote(); updateChips(); renderCalendar();
-    loadSlots(false).catch(() => {
-      monthLabel.textContent = 'Unavailable';
-      timesTitle.textContent = 'Booking is temporarily unavailable.';
-      showError('We could not load the available times. Please try again in a moment or write to info@mpnagency.com.');
-      submitBtn.disabled = true;
-    });
-
-    guardForm(bfcForm, async () => {
-      showError('');
-      if (!selectedSlot){ showError('Please choose a day and a time first.'); return; }
-      submitBtn.disabled = true; submitBtn.textContent = 'Booking…';
-      try {
-        const r = await fetch(`${MPN_API}/api/book`, {
-          method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: bfcForm.elements.name.value, email: bfcForm.elements.email.value, startUtc: new Date(selectedSlot).toISOString(), timezone: tz, consent: true, website: bfcForm.elements.website.value })
-        });
-        const j = await r.json().catch(() => ({}));
-        if (!r.ok){ showError(j.error || 'Something went wrong. Please try again.'); if (j.refresh) await loadSlots(true); return; }
-        document.getElementById('bfcDoneWhen').textContent = tz === LONDON ? fmtFull(selectedSlot, LONDON) : `${fmtFull(selectedSlot, tz)} — that is ${fmtTime(selectedSlot, LONDON)} in the UK`;
-        document.getElementById('bfcGoogle').href = j.googleUrl;
-        document.getElementById('bfcIcs').href = `${MPN_API}${j.icsUrl}`;
-        const meet = document.getElementById('bfcMeet');
-        if (j.meetLink){ meet.href = j.meetLink; meet.hidden = false; }
-        bfcForm.hidden = true; document.getElementById('bfcDone').hidden = false;
-      } catch (e){
-        showError('We could not reach the booking service. Please try again in a moment.');
-      } finally {
-        submitBtn.disabled = false; submitBtn.textContent = 'Book my call';
-      }
-    });
-  }
-
   /* ---------- Pricing: plan links follow the one-to-one / group toggle -------- */
   const planLinks = document.querySelectorAll('a[data-plan]');
   window.mpnSyncPlanLinks = () => {
@@ -345,9 +193,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const planSummary = document.getElementById('planSummary');
   if (planSummary){
     const PLANS = {
-      start: { name: 'START', range: '8–12 lessons', opts: ['8 lessons · 2 a week', '12 lessons · 3 a week'], one: '£24.99', group: '£19.99' },
-      progress: { name: 'PROGRESS', range: '24–36 lessons', opts: ['24 lessons · 2 a week', '36 lessons · 3 a week'], one: '£22.99', group: '£18.99' },
-      mastery: { name: 'MASTERY', range: '48–72 lessons', opts: ['48 lessons · 2 a week', '72 lessons · 3 a week'], one: '£19.99', group: '£16.99' }
+      start: { name: 'START', range: '8–12 lessons', opts: ['8 lessons · 2 a week', '12 lessons · 3 a week'], one: '£29.99', group: '£24.99' },
+      progress: { name: 'PROGRESS', range: '24–36 lessons', opts: ['24 lessons · 2 a week', '36 lessons · 3 a week'], one: '£27.99', group: '£22.99' },
+      mastery: { name: 'MASTERY', range: '48–72 lessons', opts: ['48 lessons · 2 a week', '72 lessons · 3 a week'], one: '£24.99', group: '£19.99' }
     };
     const q = new URLSearchParams(window.location.search);
     const key = PLANS[q.get('plan')] ? q.get('plan') : 'progress';
@@ -582,7 +430,6 @@ document.addEventListener('DOMContentLoaded', () => {
       'pricing.html': ['Pricing', null],
       'how-to-start.html': ['How it works', null],
       'contacts.html': ['Contact', null],
-      'book-a-discovery-call.html': ['Book a discovery call', null],
       'about-us.html': ['About us', 'About MPN'],
       'our-values.html': ['Our values', 'About MPN'],
       'education.html': ['Education', 'Our values'],
@@ -639,7 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ['students.html', 'Explore lessons', 'See how every lesson works and what is included.', '1758612214848-04e700d192ce'],
       ['pricing.html', 'See plans & prices', 'Compare Freestyle plans for Italian and Spanish.', '1590769398823-a62d7ecc25e6'],
       ['how-to-start.html', 'How it works', 'From sign-up to your first lesson in four steps.', '1760623681430-9224e69d9683'],
-      ['book-a-discovery-call.html', 'Book a discovery call', 'Talk to our team and shortlist your tutors.', '1531534809446-724fcafe9e97'],
+      ['contacts.html', 'Contact us', 'Questions? Write to our team and we will get back to you.', '1531534809446-724fcafe9e97'],
       ['contacts.html#faq', 'Read the FAQ', 'Quick answers about tokens, lessons and booking.', '1759984782050-981de6a25d55']
     ];
     const tutorCards = [
@@ -651,7 +498,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const isTutor = info && info[1] === 'For tutors';
     const pool = isTutor ? tutorCards : studentCards;
     const cards = pool.filter(c => c[0].split('#')[0] !== file).slice(0, 3);
-    if (cta && info && file !== 'sitemap.html' && file !== 'book-a-discovery-call.html'){
+    if (cta && info && file !== 'sitemap.html'){
       const sec = document.createElement('section');
       sec.className = 'container next-steps';
       const h2 = document.createElement('h2');
@@ -741,7 +588,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const STORAGE_KEY = 'mpnNewsletterSeen';
     let seen = false;
     try { seen = localStorage.getItem(STORAGE_KEY) === '1'; } catch(e){ seen = false; }
-    if (seen || !(MPN_KIT.newsletterFormId || MPN_KIT.launchFormId) || document.getElementById('countdown')) return;
+    if (seen || !(MPN_KIT.newsletterFormId || MPN_KIT.launchFormId) || document.getElementById('countdown') || document.body.hasAttribute('data-no-popup')) return;
 
     const markSeen = () => { try { localStorage.setItem(STORAGE_KEY, '1'); } catch(e){} };
 
