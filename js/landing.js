@@ -305,9 +305,10 @@
   ];
   const TRIAL = 1999, SINGLE = 3499;
 
-  const state = { lang: 'en', format: 'one' };
   const $ = (s, r) => (r || document).querySelector(s);
   const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+  // landing.html opens on one-to-one, landing-group.html on group (data-format on <body>)
+  const state = { lang: 'en', format: document.body.dataset.format === 'group' ? 'group' : 'one' };
 
   const t = (key, vars) => {
     let s = (T[state.lang] && T[state.lang][key]);
